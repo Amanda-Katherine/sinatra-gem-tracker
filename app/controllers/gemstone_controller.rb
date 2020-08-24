@@ -1,0 +1,3 @@
+class GemstoneController < ApplicationController
+    
+end

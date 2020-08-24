@@ -1,5 +1,3 @@
-require './config/environment'
-
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -13,7 +11,7 @@ class ApplicationController < Sinatra::Base
     erb :homepage
   end
 
-  helper do
+  helpers do
     def logged_in? 
       !!current_user
     end

@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200824053403) do
+ActiveRecord::Schema.define(version: 20200824154545) do
 
-  create_table "gems", force: :cascade do |t|
+  create_table "gemstones", force: :cascade do |t|
     t.string  "name"
     t.string  "description"
     t.integer "user_id"
