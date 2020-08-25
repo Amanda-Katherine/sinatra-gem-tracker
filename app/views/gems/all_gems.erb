@@ -1,1 +1,7 @@
-shows all gems
+<h2>Welcome, <%= current_user.username %> </h2>
+
+<%= @gems.each do |gem| %>
+<span class="gem-name"><%= gem.name %>:</span><span class="gem-description"><%= gem.description %></span> 
+
+#look to have descriptions show/not show based on if user is logged in
+
