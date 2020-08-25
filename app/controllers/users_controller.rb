@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
     
-    #add user slug page here directing to user's page with their gems
-
     get '/signup' do
         if logged_in? 
             redirect to '/gems'
@@ -19,6 +17,17 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect to '/gems'
         end
+    end
+
+    get '/users/:slug' do 
+        redirect_if_not_logged_in
+        @user = User.find_by_slug(params[:username])
+        if @user && @user.id == session[:id]
+            erb :"/users/user_gems"
+        else
+            #insert flash message here about not being able to view other user's gem page
+            redirect "/users/#{current_user.slug}"
+        end 
     end
 
     get '/login' do
