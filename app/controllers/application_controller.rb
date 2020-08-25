@@ -13,7 +13,12 @@ class ApplicationController < Sinatra::Base
 
   helpers do
 
-    #add redirect if not logged in functionality with flash message
+    def redirect_if_not_logged_in
+      if !current_user
+        #insert flash message about must be logged in to see page
+        redirect '/login'
+      end
+    end
 
     def logged_in? 
       !!current_user
