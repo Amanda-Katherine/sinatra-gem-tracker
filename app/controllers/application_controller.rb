@@ -11,6 +11,10 @@ class ApplicationController < Sinatra::Base
     erb :homepage
   end
 
+  get '/corneal' do
+    erb :welcome
+  end
+
   helpers do
 
     def redirect_if_not_logged_in
