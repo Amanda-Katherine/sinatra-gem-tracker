@@ -1,8 +1,8 @@
 
 
 <% if logged_in? %>
-    
     <span class="homepage-title"><h2>Hello, <%=current_user.username %>. Welcome back to <span class="gem-tracker">Gem Tracker</span>!</h2> <h3>A place to <i>stay classy</i> while talking about sweet, sweet ruby gems.</h3></span>
+    <p class="welcome-link">Click to create a <a href="/gems/new">new gem</a> or to view your <a href="/users/<%=current_user.slug%>"> user page</a> to get started</p>
 <% else %>
     <span class="homepage-title"><h2>Welcome to <span class="gem-tracker">Gem Tracker</span>!</h2> <h3>A place to <i>stay classy</i> while talking about sweet, sweet ruby gems.</h3></span>
     <p class="welcome-link">Please <a href="/signup">sign up</a> or <a href="/login"> login </a> to get started</p>

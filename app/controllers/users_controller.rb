@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        binding.pry
         if params[:username] == "" || params[:password] == ""   #convert to username validation later
             #insert flash message
             redirect to '/signup'
@@ -22,13 +21,10 @@ class UsersController < ApplicationController
 
     get '/users/:slug' do 
         redirect_if_not_logged_in
-        @user = User.find_by_slug(params[:username])
-        if @user && @user.id == session[:id]
-            erb :"/users/user_gems"
-        else
-            #insert flash message here about not being able to view other user's gem page
-            redirect "/users/#{current_user.slug}"
-        end 
+        @user = User.find_by_slug(params[:slug])
+      
+        erb :"/users/users_gems"
+
     end
 
     get '/login' do

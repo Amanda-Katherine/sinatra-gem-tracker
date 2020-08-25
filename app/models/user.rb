@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    has_many  :gems
+    has_many  :gemstones
     has_secure_password
 
     def slug

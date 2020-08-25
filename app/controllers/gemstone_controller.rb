@@ -18,8 +18,7 @@ class GemstoneController < ApplicationController
                 #insert flash message about no blanks
                 redirect '/gems/new'
             else
-                binding.pry
-                @gem = current_user.gems.build(name: params[:name], description: params[:description])
+                @gem = current_user.gemstones.build(name: params[:name], description: params[:description])
                 if @gem.save
                     redirect "/gems/#{@gem.id}"
                 else
