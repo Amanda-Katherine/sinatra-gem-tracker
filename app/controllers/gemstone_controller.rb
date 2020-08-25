@@ -5,6 +5,10 @@ class GemstoneController < ApplicationController
     end
 
     get '/gems/new' do
-        
+        if !logged_in? 
+            redirect_if_not_logged_in
+        else 
+            erb :'/gems/create_gem'
+        end
     end
 end
