@@ -7,7 +7,16 @@ class UsersController < ApplicationController
         end
     end
 
-
+    post '/signup' do
+        if params[:username] == "" || params[:password] == ""   #convert to username validation later
+            #insert flash message
+            redirect to '/signup'
+        else 
+            @user=User.create(:username => params[:username], :password => params[:password])
+            session[:user_id] = @user.id
+            redirect to '/gems'
+        end
+    end
 
 
 end
