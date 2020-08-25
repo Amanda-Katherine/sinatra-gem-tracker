@@ -34,8 +34,14 @@ class GemstoneController < ApplicationController
         if !logged_in? 
             redirect_if_not_logged_in
         else 
-            @gem = Gemstone.find_by(params[:id])
-            erb :'gems/show_gem'
+            # binding.pry
+            @gem = Gemstone.find_by_id(params[:id])
+            if @gem
+                erb :'gems/show_gem'
+            else 
+                #insert flash message about gem page don't exist
+                redirect '/gems'
+            end
         end
     end
 

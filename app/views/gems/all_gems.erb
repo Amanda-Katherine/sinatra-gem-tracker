@@ -1,10 +1,10 @@
 <h2>Welcome, <%= current_user.username %> </h2>
 
-<%= @gems.each do |gem| %>
-<span class="title"><%= gem.name %>:</span><span class="description"><%= gem.description %></span> 
+<% @gems.each do |gem| %>
+<span class="title"><%= gem.name %>:</span><span class="description"><%= gem.description %></span><br>
 <% end %>
 
-#look to have descriptions show/not show based on if user is logged in
+<%# look to have descriptions show/not show based on if user is logged in %>
 
-#look to make gems unique. Sort by popularity. How to choose which description then? Possibly show 1 gem name and description and then link to other descriptions if there is more than 1
+<%# look to make gems unique. Sort by popularity. How to choose which description then? Possibly show 1 gem name and description and then link to other descriptions if there is more than 1 %>
 
