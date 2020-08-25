@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    
+    #add user slug page here directing to user's page with their gems
+
     get '/signup' do
         if logged_in? 
             redirect to '/gems'
