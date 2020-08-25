@@ -76,14 +76,13 @@ class GemstoneController < ApplicationController
     end
 
     delete '/gems/:id/delete' do
-        if logged_in?
-            @gem = Gemstone.find_by(params[:id])
-            if @gem && @gem.user == current_user
-                @gem.delete
-            end
-            redirect '/gems'
-        else
-            redirect_if_not_logged_in
+        redirect_if_not_logged_in
+        
+        @gem = Gemstone.find_by(params[:id])
+        if @gem && @gem.user == current_user
+            #insert flash message here
+            @gem.delete
+            redirect "/gems/#{current_user.slug}"
         end
     end
 end
