@@ -18,7 +18,7 @@ class GemstoneController < ApplicationController
                 #insert flash message about no blanks
                 redirect '/gems/new'
             else
-                @gem = current_user.gems.build(name: params[:name], description: params[:description])
+                @gem = current_user.gemstones.build(name: params[:name], description: params[:description])
                 if @gem.save
                     redirect "/gems/#{@gem.id}"
                 else
@@ -34,8 +34,22 @@ class GemstoneController < ApplicationController
         if !logged_in? 
             redirect_if_not_logged_in
         else 
-            @gem = Gem.find_by(params[:id])
+            @gem = Gemstone.find_by(params[:id])
             erb :'gems/show_gem'
+        end
+    end
+
+    get 'gems/:id/edit' do
+        if !logged_in? 
+            redirect_if_not_logged_in
+        else 
+            @gem = Gemstone.find_by(params[:id])
+            if @gem && @gem.user == current_user
+                erb :'/gems/edit_gem'
+            else 
+                #add in flash message about not have proper credentials to edit gem
+                redirect '/gems'
+            end
         end
     end
 
