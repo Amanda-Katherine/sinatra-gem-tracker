@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
+        binding.pry
         if params[:username] == "" || params[:password] == ""   #convert to username validation later
             #insert flash message
             redirect to '/signup'
