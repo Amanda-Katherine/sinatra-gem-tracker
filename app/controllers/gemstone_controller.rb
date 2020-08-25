@@ -53,9 +53,25 @@ class GemstoneController < ApplicationController
         end
     end
 
-
-
-
-
-
+    patch 'gems/:id' do
+        if logged_in? 
+            if params[:name] == "" || params[:description] == ""
+                #insert flash message about no blanks
+                redirect "/gems/#{params[:id]}/edit"
+            else
+                @gem = Gemstone.find_by(params[:id])
+                if @gem && @gem.user == current_user
+                    if @gem.update(description: params[:description])
+                        redirect "/gems/#{@gem.id}"
+                    else
+                        redirect "/gems/#{@gem.id}/edit"
+                    end
+                else
+                    redirect "/gems"
+                end
+            end
+        else
+            redirect_if_not_logged_in
+        end
+    end
 end
