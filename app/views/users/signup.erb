@@ -1,1 +1,9 @@
-signup
+<h2>Sign Up</h2>
+
+<%# insert flash message here for signup errors %>
+
+<form class="form" action="/signup" method="post">
+<p class="form_description">Username: <input class="form_input" type="text" name="username" id="username"></p>
+<p class="form_description">Password: <input class="form_input" type="password" name="password" id="password"></p>
+<input type="button" value="Sign Up">
+</form>

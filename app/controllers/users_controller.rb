@@ -12,7 +12,7 @@ class UsersController < ApplicationController
             #insert flash message
             redirect to '/signup'
         else 
-            @user=User.create(:username => params[:username], :password => params[:password])
+            @user=User.create(:username => params[:username], :password => params[:password]) #check if params works here as well
             session[:user_id] = @user.id
             redirect to '/gems'
         end
