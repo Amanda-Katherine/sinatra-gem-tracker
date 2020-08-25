@@ -3,4 +3,8 @@ class GemstoneController < ApplicationController
         @gems = Gemstone.all
         erb :'gems/all_gems'
     end
+
+    get '/gems/new' do
+        
+    end
 end
