@@ -3,13 +3,12 @@
 <% else %>
 <h2>Here are your Gems, <%= @user.username %></h2>
 <% end %>
-<%# #change this to be username or not. %>
 
 <% @user.gemstones.each do |gem| %>
 <span class="gem-title"><%= gem.name %>:  </span>
 <span class="description"><%= gem.description %></span>  
 
-    <% if gem_creator?(gem) %>
+    <% if @user == current_user %>
         <a class="redirect-link" id="edit" href="/gems/<%=gem.id%>/edit">Edit Gem</a>
 
         <form action="/gems/<%= gem.id %>/delete" method="post">

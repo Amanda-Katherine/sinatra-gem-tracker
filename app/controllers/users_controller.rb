@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        @user=User.create(:username => params[:username], :password => params[:password]) #check if params works here as well
+        @user=User.create(:username => params[:username].downcase, :password => params[:password]) #check if params works here as well
         if @user.save
             session[:user_id] = @user.id
             redirect to '/gems'

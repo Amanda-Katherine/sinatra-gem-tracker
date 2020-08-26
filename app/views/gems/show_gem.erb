@@ -1,7 +1,7 @@
 <span class="title" id="show"> <%= @gem.name %>: </span><span class="description" id="show"><%= @gem.description %></span>
 
 <div><br>
-<form action="/gems/<%= @gem.id %>/delete" method="post">
+<form action="/gems/<%= @gem.id %>" method="post">
     <input type="hidden" id="hidden" name="_method" value="delete">
     <input type="submit" value="Delete This Gem">
 </form>

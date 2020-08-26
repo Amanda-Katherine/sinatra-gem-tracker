@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
     has_many  :gemstones
     has_secure_password
 
-    validates :username, presence: true, uniqueness: true
+    validates :username, presence: true, uniqueness: true, format: { without: /\s/ }
 
     def slug
         self.username.strip.downcase.gsub(" ","-")

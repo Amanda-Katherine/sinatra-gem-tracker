@@ -33,7 +33,10 @@ class ApplicationController < Sinatra::Base
     end
 
     def gem_creator?(gem)
-      gem.user == current_user
+      if gem.user != current_user
+        #insert flash message about credentials
+        redirect to '/gems'
+      end
     end
   end
 
