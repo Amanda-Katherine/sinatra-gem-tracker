@@ -27,9 +27,9 @@ class GemstoneController < ApplicationController
     end
 
     get '/gems/:id' do
-
         redirect_if_not_logged_in
         @gem = Gemstone.find_by_id(params[:id])
+       
         if @gem
             erb :'gems/show_gem'
         else 

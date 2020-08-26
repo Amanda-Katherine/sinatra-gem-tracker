@@ -4,7 +4,7 @@
     <h3>Hey stranger, feel free to sign up to add to our gem library</h3>
 <% end %>
 
-
+<h4>All Gems Created</h4>
 <% @gems.each do |gem| %>
 <span><a class="gem-title" href="/gems/<%=gem.id%>"><%= gem.name %></a> - </span>
 <span class="description"><%= gem.description %></span><br>
