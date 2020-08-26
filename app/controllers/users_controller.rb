@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
     post '/signup' do
         @user=User.create(:username => params[:username].downcase, :password => params[:password]) #check if params works here as well
-        if @user.save
+        if @user.valid?
+            @user.save
             session[:user_id] = @user.id
             redirect to '/gems'
         else 
@@ -40,12 +41,12 @@ class UsersController < ApplicationController
 
     post '/login' do
         @user = User.find_by_username(params[:username])
-        binding.pry
+        
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect to '/gems'
         else
-            #insert flash message about credentials not matching
+            flash[:message] = "Invalid login."
             erb :'users/login'
         end
     end

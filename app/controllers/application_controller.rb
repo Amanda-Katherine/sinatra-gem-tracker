@@ -7,6 +7,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
+  register Sinatra::Flash
+
   get "/" do
     erb :homepage
   end

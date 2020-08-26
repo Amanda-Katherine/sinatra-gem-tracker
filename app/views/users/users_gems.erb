@@ -13,8 +13,7 @@
 
         <form action="/gems/<%= gem.id %>" method="post">
             <input type="hidden" id="hidden" name="_method" value="delete">
-            <input class="link-button" type="submit" value="Delete Gem" 
-            onclick="return confirm('Are you sure you want to delete this gem?');">
+            <input class="link-button" type="submit" value="Delete Gem" onclick="return confirm('Are you sure you want to delete this gem?');">
         </form>
     <% end %>
 <% end %>
