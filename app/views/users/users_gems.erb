@@ -1,5 +1,7 @@
 <h2>Here are your Gems, <%= @user.username %></h2>
 
+<%# #change this to be username or not. 0 %>
+
 <% @user.gemstones.each do |gem| %>
 <span class="title"><%= gem.name %>:  </span><span class="description"><%= gem.description %></span>  <a class="redirect-link" id="small" href="/gems/<%= gem.id %>/edit"><%= gem.name %></a><br>
 <% end %>
