@@ -5,8 +5,8 @@
 <% end %>
 
 <% @user.gemstones.each do |gem| %>
-<span class="gem-title"><%= gem.name %>:  </span>
-<span class="description"><%= gem.description %></span>  
+    <span class="gem-title"><%= gem.name %>:</span>
+    <span class="description"><%= gem.description %></span>  
 
     <% if @user == current_user %>
         <a class="redirect-link" id="edit" href="/gems/<%=gem.id%>/edit">Edit Gem</a>

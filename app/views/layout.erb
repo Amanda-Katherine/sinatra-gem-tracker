@@ -18,6 +18,7 @@
   <nav>
   <% if logged_in? %>
   <ul>
+    <li><a href="/">Homepage</a></li>
     <li><a href="/gems">All Gems</a></li>
     <li><a href="/users/<%= current_user.slug %>">Your Gems</a></li>
     <li><a href="/gems/new">Create New Gem</a></li>
@@ -25,10 +26,9 @@
   </ul>
   <% else %>
   <ul>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
+    <li><a href="/">Homepage</a></li>
+    <li><a href="/signup">Signup</a></li>
+    <li><a href="/login">Login</a></li>
   </ul>
   <% end %>
 

@@ -63,17 +63,36 @@
     flex-direction: row;
   }
 
-  .title {
-    font-weight: bold;
-  }
-
   .link-button { 
     background: none;
     border: none;
     color: #0000ee;
     text-decoration: underline;
     cursor: pointer; 
-}
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .username-label {
+    text-align: right; 
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   .main {
