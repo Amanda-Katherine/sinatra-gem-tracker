@@ -40,23 +40,22 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by(:username => params[:username])
-
+        user = User.find_by_username(params[:username])
+        
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect to '/gems'
         else
             #insert flash message about credentials not matching
-            redirect to '/signup'
+            erb :'users/login'
         end
     end
 
     get '/logout' do
         if logged_in?
             session.destroy
-            redirect to '/login'
-        else
-            redirect to '/'
         end
+
+        redirect to '/'
     end
 end

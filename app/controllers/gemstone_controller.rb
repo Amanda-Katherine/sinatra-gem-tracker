@@ -71,7 +71,7 @@ class GemstoneController < ApplicationController
         end
     end
 
-    delete '/gems/:id/delete' do
+    delete '/gems/:id' do
         redirect_if_not_logged_in
         @gem = Gemstone.find_by_id(params[:id])
         if @gem && @gem.user == current_user
