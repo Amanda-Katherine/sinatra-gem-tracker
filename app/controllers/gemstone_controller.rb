@@ -46,10 +46,11 @@ class GemstoneController < ApplicationController
     end
 
     get '/gems/:id/edit' do
+        # binding.pry
         if !logged_in? 
             redirect_if_not_logged_in
         else 
-            @gem = Gemstone.find_by(params[:id])
+            @gem = Gemstone.find_by_id(params[:id])
             if @gem && @gem.user == current_user
                 erb :'/gems/edit_gem'
             else 
@@ -83,7 +84,6 @@ class GemstoneController < ApplicationController
 
     delete '/gems/:id/delete' do
         redirect_if_not_logged_in
-        binding.pry
         @gem = Gemstone.find_by_id(params[:id])
         if @gem && @gem.user == current_user
             #insert flash message here

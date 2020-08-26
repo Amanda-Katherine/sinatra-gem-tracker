@@ -3,6 +3,6 @@
 <form class="form" action="/gems/<%=@gem.id%>" method="post">
 <input type="hidden" id="hidden" name="_method" value="patch">
 <p class="title" id="form">Gem Name: <input class="description" type="text" name="name" id="form" value="<%= @gem.name %>"></p>
-<p class="title" id="form">Gem Description: <input class="description" type="textbox" name="description" id="form" value="<%= @gem.name %>"></p>
+<p class="title" id="form">Gem Description: <input class="description" type="textbox" name="description" id="form" value="<%= @gem.description %>"></p>
 <input class="button" type="submit" value="Edit Gem">
 </form>
