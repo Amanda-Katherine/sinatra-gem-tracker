@@ -4,11 +4,8 @@
     <h3>Hey stranger, feel free to sign up to add to our gem library</h3>
 <% end %>
 
-<h4>All Gems Created</h4>
+<h4>Here's a list of all the gems added to our library:</h4>
 <% @gems.each do |gem| %>
 <span><a class="gem-title" href="/gems/<%=gem.id%>"><%= gem.name %></a> - </span>
 <span class="description"><%= gem.description %></span><br>
 <% end %>
-
-<%# look to make gems unique. Sort by popularity. How to choose which description then? Possibly show 1 gem name and description and then link to other descriptions if there is more than 1 %>
-

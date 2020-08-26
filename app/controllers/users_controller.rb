@@ -23,7 +23,12 @@ class UsersController < ApplicationController
         redirect_if_not_logged_in
         @user = User.find_by_slug(params[:slug])
         
-        erb :"/users/users_gems"
+        if !!@user
+            erb :"/users/users_gems"
+        else
+            #insert flash message about username not existing
+            redirect '/gems'
+        end
     end
 
     get '/login' do
