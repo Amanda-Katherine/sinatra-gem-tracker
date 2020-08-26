@@ -50,7 +50,8 @@ class GemstoneController < ApplicationController
     end
 
     patch '/gems/:id' do
-        if logged_in? 
+        redirect_if_not_logged_in
+
             if params[:name] == "" || params[:description] == ""
                 #insert flash message about no blanks
                 redirect "/gems/#{params[:id]}/edit"
@@ -66,9 +67,6 @@ class GemstoneController < ApplicationController
                     redirect "/gems"
                 end
             end
-        else
-            redirect_if_not_logged_in
-        end
     end
 
     delete '/gems/:id' do

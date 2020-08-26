@@ -3,9 +3,8 @@ class UsersController < ApplicationController
     get '/signup' do
         if logged_in? 
             redirect to '/gems'
-        else 
-            erb :'users/signup'
         end
+            erb :'users/signup'
     end
 
     post '/signup' do
@@ -40,10 +39,10 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by_username(params[:username])
-        
-        if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
+        @user = User.find_by_username(params[:username])
+        binding.pry
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
             redirect to '/gems'
         else
             #insert flash message about credentials not matching
