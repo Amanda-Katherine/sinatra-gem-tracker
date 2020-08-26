@@ -14,6 +14,27 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+  <header>
+  <nav>
+  <% if logged_in? %>
+  <% binding.pry %>
+  <ul>
+    <li><a href="/gems">All Gems</a></li>
+    <li><a href="/users/<%= current_user.slug %>">Your Gems</a></li>
+    <li><a href="/gems/new">Create New Gem</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  <% else %>
+  <ul>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+  </ul>
+  <% end %>
+
+  </nav>
+  </header>
     <div class="wrapper">
 
         <%= yield %>

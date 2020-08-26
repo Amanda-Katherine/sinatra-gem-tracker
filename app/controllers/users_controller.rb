@@ -24,7 +24,6 @@ class UsersController < ApplicationController
         @user = User.find_by_slug(params[:slug])
       
         erb :"/users/users_gems"
-
     end
 
     get '/login' do
