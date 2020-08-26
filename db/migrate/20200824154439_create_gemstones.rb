@@ -8,18 +8,3 @@ class CreateGemstones < ActiveRecord::Migration
   end
 end
 
-class LAPTOP-2HT6APIL < ActiveRecord::Migration
-  def change
-    def up
-      change_table :gemstones do |t|
-        t.change :description, :string
-      end
-    end
-   
-    def down
-      change_table :gemstones do |t|
-        t.change :description, :text
-      end
-    end
-  end
-end
