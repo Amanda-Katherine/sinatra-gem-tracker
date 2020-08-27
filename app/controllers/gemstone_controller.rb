@@ -33,25 +33,29 @@ class GemstoneController < ApplicationController
         if @gem
             erb :'gems/show_gem'
         else 
-            #insert flash message about gem page don't exist
+            flash[:message] = "Looks like that gem doesn't exist. Checkout what we do have in the mine."
+
             redirect '/gems'
         end
     end
 
     get '/gems/:id/edit' do
         redirect_if_not_logged_in
-        @gem = Gemstone.find_by_id(params[:id])
-        if @gem && @gem.user == current_user
+        @gem = Gemstone.find_by_id(params[:id])  
+        
+        redirect_if_not_creator(@gem)
+        
+        if @gem && gem_creator?(@gem)
             erb :'/gems/edit_gem'
-        else 
-            #add in flash message about not have proper credentials to edit gem
+        else
+            flash[:message] = "Well, that gem doesn't exist. Keep mining."
             redirect '/gems'
         end
+       
     end
 
     patch '/gems/:id' do
         redirect_if_not_logged_in
-            # binding.pry
             if params[:name] == "" || params[:description] == ""
                 #insert flash message about no blanks
                 redirect "/gems/#{params[:id]}/edit"
@@ -72,8 +76,7 @@ class GemstoneController < ApplicationController
     delete '/gems/:id' do
         redirect_if_not_logged_in
         @gem = Gemstone.find_by_id(params[:id])
-        # binding.pry
-        if @gem && @gem.user == current_user
+        if @gem && gem_creator?(@gem)
             #insert flash message here
             @gem.delete
             redirect "/users/#{current_user.slug}"

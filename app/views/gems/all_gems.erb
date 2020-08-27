@@ -4,6 +4,8 @@
     <h3>Hey stranger, feel free to sign up to add to our gem library</h3>
 <% end %>
 
+<div> ---------- <%= flash[:message] %> ---------- </div>
+
 <h4>Here's a list of all the gems added to our library:</h4>
 
 <% @gems.each do |gem| %>

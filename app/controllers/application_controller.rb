@@ -20,8 +20,8 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def redirect_if_not_logged_in
-      if !current_user
-        #insert flash message about must be logged in to see page
+      if !logged_in?
+        flash[:message] = "Whoops, looks like you need to log in!"
         redirect '/login'
       end
     end
@@ -35,8 +35,13 @@ class ApplicationController < Sinatra::Base
     end
 
     def gem_creator?(gem)
-      if gem.user != current_user
-        #insert flash message about credentials
+      gem.user == current_user
+    end
+
+
+    def redirect_if_not_creator(gem)
+      if !gem_creator?(gem)
+        flash[:message] = "Looks like you didn't create this gem. Want to change the tune of this gem? Frank Sinatra says, permission denied."
         redirect to '/gems'
       end
     end
