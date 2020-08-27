@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     
     get '/signup' do
         if current_user 
-            redirect to '/gems'
+            redirect to '/'
         end
         
         erb :'users/signup'
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     get '/login' do
         if current_user
-            redirect to '/gems' 
+            redirect to '/' 
         end
 
         erb :'users/login'

@@ -1,6 +1,8 @@
 <h2>Login</h2>
 
-<%= flash[:message] %><br>
+<% if flash[:message] %>
+<p class="error">  ---------- <%= flash[:message] %> ---------- </p>
+<% end %>
 
 <form class="form" action="/login" method="post">
   <p class="form-description"> Username: <input class="form-input" type="text" name="username" value="<%= @user && @user.username %>"></p>

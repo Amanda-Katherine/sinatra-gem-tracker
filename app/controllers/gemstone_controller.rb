@@ -1,6 +1,6 @@
 class GemstoneController < ApplicationController
     get '/gems' do
-        @gems = Gemstone.all.sort_by {|gem| gem.description.length && gem.name.downcase}.uniq {|gem| gem.name.downcase}
+        @gems = Gemstone.all.sort_by {|gem| gem.description.length}.reverse.sort_by{|gem| gem.name.downcase}.uniq {|gem| gem.name.downcase}
         
         erb :'gems/all_gems'
     end
@@ -28,7 +28,7 @@ class GemstoneController < ApplicationController
         if @gem
             erb :'gems/show_gem'
         else 
-            flash[:message] = "Looks like that gem doesn't exist. Checkout what gems we do have in the mine."
+            flash[:message] = "Hmmm...that gem doesn't exist. Checkout what gems we do have in the mine."
 
             redirect '/gems'
         end
