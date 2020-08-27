@@ -8,9 +8,9 @@
 <p class="error">  ---------- <%= flash[:message] %> ---------- </p>
 <% end %>
 
-<h4>Here's a list of all the gems added to our little mine:</h4>
+<p><h4>Here's a list of all the gems added to our little mine:</h4></p>
 
 <% @gems.each do |gem| %>
-    <span><a class="gem-title" href="/gems/<%=gem.id%>"><%= gem.name %></a> - </span>
-    <span class="description"><%= gem.description %></span><br>
+    <div><span><a class="gem-title" href="/gems/<%=gem.id%>"><%= gem.name %></a> - </span>
+    <span class="description"><%= gem.description %></span></div><br>
 <% end %>
