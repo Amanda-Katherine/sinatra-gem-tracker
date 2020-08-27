@@ -56,21 +56,19 @@ class GemstoneController < ApplicationController
 
     patch '/gems/:id' do
         redirect_if_not_logged_in
-            if params[:name] == "" || params[:description] == ""
-                #insert flash message about no blanks
-                redirect "/gems/#{params[:id]}/edit"
+
+        @gem = Gemstone.find_by_id(params[:id])
+        
+        if @gem && gem_creator?(@gem)
+            if @gem.update(name: params[:name], description: params[:description])
+                redirect "/gems/#{@gem.id}"
             else
-                @gem = Gemstone.find_by_id(params[:id])
-                if @gem && @gem.user == current_user
-                    if @gem.update(description: params[:description])
-                        redirect "/gems/#{@gem.id}"
-                    else
-                        redirect "/gems/#{@gem.id}/edit"
-                    end
-                else
-                    redirect "/gems"
-                end
+                flash[:message] = "Whoops, looks like that didn't work. It's possible you had a blank input."
+                redirect "/gems/#{@gem.id}/edit"
             end
+        else
+            redirect "/gems"
+        end
     end
 
     delete '/gems/:id' do
