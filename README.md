@@ -18,21 +18,20 @@ Clone this repo and run
 
 Then run: 
 
-    $ rake cd:migrate
+    $ rake db:migrate
 
 Start up local server by running
 
-    $ shotrun 
+    $ shotgun 
 
 For interactive console
 
-    $ bundle exec rake console
+    $ rake console
 OR
 
-    $ bundle exec tux
+    $ tux
 
-## Future improvements
-* Improve CSS 
+## Future improvements 
 * Add password confirmation at signup
 * Allow developers to add more than just ruby gems (framework themes, other languages 'gems', etc)
 
