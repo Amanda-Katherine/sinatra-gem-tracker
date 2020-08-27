@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
 
     def redirect_if_not_creator(gem)
       if !gem_creator?(gem)
-        flash[:message] = "Looks like you didn't create this gem. Want to change the tune of this gem? Frank Sinatra says, permission denied."
+        flash[:message] = "You aren't allowed to change the tune of this gem? Frank Sinatra says, permission denied."
         redirect to '/gems'
       end
     end

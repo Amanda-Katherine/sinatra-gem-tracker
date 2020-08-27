@@ -33,7 +33,7 @@ class GemstoneController < ApplicationController
         if @gem
             erb :'gems/show_gem'
         else 
-            flash[:message] = "Looks like that gem doesn't exist. Checkout what we do have in the mine."
+            flash[:message] = "Looks like that gem doesn't exist. Checkout what gems we do have in the mine."
 
             redirect '/gems'
         end
@@ -43,7 +43,7 @@ class GemstoneController < ApplicationController
         redirect_if_not_logged_in
         @gem = Gemstone.find_by_id(params[:id])  
         
-        redirect_if_not_creator(@gem)
+        redirect_if_not_creator(@gem) if @gem
         
         if @gem && gem_creator?(@gem)
             erb :'/gems/edit_gem'
