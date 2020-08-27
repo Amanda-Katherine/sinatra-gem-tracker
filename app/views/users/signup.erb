@@ -1,7 +1,7 @@
 <h2>Sign Up</h2>
 
 <% if flash[:message] %>
-<p class="error">  ---------- <%= flash[:message] %> ---------- </p>
+<p class="error"> <%= flash[:message] %> </p>
 <% end %>
 
 <form class="form" action="/signup" method="POST">
