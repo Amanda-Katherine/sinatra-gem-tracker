@@ -1,24 +1,23 @@
-<span class="title" id="show"> <%= @gem.name %>: </span><span class="description" id="show"><%= @gem.description %></span>
+<span class="gem-title" id="show"> <%= @gem.name %>: </span>
+<span class="description" id="show"><%= @gem.description %></span>
 
 <% if @gem.user == current_user %>
-<div><br>
+    <div><br>
+        <form class="form" action="/gems/<%=@gem.id%>" method="post">
+            <input type="hidden" id="hidden" name="_method" value="patch">
+            <input class="button" type="submit" value="Edit Gem">
+        </form>
 
-<form class="form" action="/gems/<%=@gem.id%>" method="post">
-<input type="hidden" id="hidden" name="_method" value="patch">
-<input class="button" type="submit" value="Edit Gem">
-</form>
-
-<form action="/gems/<%= @gem.id %>" method="post">
-<input type="hidden" id="hidden" name="_method" value="delete">
-<input class="button" type="submit" value="Delete This Gem" onclick="return confirm('Are you sure you want to delete this gem?');">
-</form>
-
-
-
-</div>
+        <form class="form" action="/gems/<%= @gem.id %>" method="post">
+            <input type="hidden" id="hidden" name="_method" value="delete">
+            <input class="button" type="submit" value="Delete This Gem" onclick="return confirm('Are you sure you want to delete this gem?');">
+        </form>
+    </div>
 <% end %>
 
-<div><label class="username-label">Gem added by: <%= @gem.user.username %></label></div>
+<div>
+    <label class="username-label">Gem added by: <%= @gem.user.username %></label>
+</div>
 
 
 
