@@ -1,8 +1,7 @@
 <h2>Edit Your Gem</h2>
 
-<% if flash[:message] %>
-<p class="error">  ---------- <%= flash[:message] %> ---------- </p>
-<% end %>
+<%= flash[:message] %> <br>
+
 
 <form class="form" action="/gems/<%=@gem.id%>" method="post">
     <input type="hidden" id="hidden" name="_method" value="patch">

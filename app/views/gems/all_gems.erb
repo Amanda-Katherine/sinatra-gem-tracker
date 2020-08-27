@@ -4,13 +4,12 @@
     <h3>Hey stranger, feel free to sign up to add to our gem library</h3>
 <% end %>
 
-<% if flash[:message] %>
-    <p class="error">   <%= flash[:message] %>  </p>
-<% end %>
+<%= flash[:message] %>
+
 
 <p><h4>Here's a list of all the gems added to our little mine:</h4></p>
 
 <% @gems.each do |gem| %>
-    <div><span><a class="gem-title" href="/gems/<%=gem.id%>"><%= gem.name %></a> - </span>
+    <div><span><a class="redirect-link" id="bold" href="/gems/<%=gem.id%>"><%= gem.name %></a> - </span>
     <span class="description"><%= gem.description %></span></div><br>
 <% end %>

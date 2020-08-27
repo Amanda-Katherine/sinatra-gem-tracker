@@ -4,23 +4,21 @@
     <h2>Here are your Gems, <%= @user.username %></h2>
 <% end %>
 
-<% if flash[:message] %>
-<p class="error">  ---------- <%= flash[:message] %> ---------- </p>
-<% end %>
+<%= flash[:message] %> <br>
 
 <% @user.gemstones.each do |gem| %>
-    <span class="gem-title"><%= gem.name %>:</span>
-    <span class="description"><%= gem.description %></span>
+    <div>
+        <span class="gem-title"><%= gem.name %>:</span>
+        <span class="description"><%= gem.description %></span>
 
-    <% if @user == current_user %>
-        <a class="redirect-link" id="edit" href="/gems/<%=gem.id%>/edit">Edit Gem</a>
+        <% if @user == current_user %>
+            <a class="redirect-link" id="edit" href="/gems/<%=gem.id%>/edit">Edit Gem</a>
 
-        <form action="/gems/<%= gem.id %>" method="post">
-            <input type="hidden" id="hidden" name="_method" value="delete">
-            <input class="link-button" type="submit" style="display: inline-block" value="Delete Gem" onclick="return confirm('Are you sure you want to delete this gem?');">
-        </form> 
-        
-
-    <% end %>
-    <br>
+            <form action="/gems/<%= gem.id %>" method="post">
+                <input type="hidden" id="hidden" name="_method" value="delete">
+                <input class="link-button" type="submit" style="display: inline-block" value="Delete Gem" onclick="return confirm('Are you sure you want to delete this gem?');">
+            </form> 
+        <% end %>
+    </div><br>
+   
 <% end %>
