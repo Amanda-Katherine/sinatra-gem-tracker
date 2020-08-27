@@ -102,8 +102,28 @@
 
 
   form {
-    display: flex;
-    flex-direction: row;
+    width: fit-content;
+  }
+
+
+  .description {
+    /* resize: vertical; */
+    width: 600px;
+    height: 18px; 
+    overflow: auto;
+  }
+
+  .gem-title {
+    padding-top: 15px;
+  }
+
+  .gem-title a{
+    color: rgb(73, 198, 214);
+  }
+
+  .button {
+    padding: 10px;
+    font-weight: bold;
   }
 
   .homepage-title {
@@ -144,11 +164,6 @@
   }
 
   .redirect-link {
-    color: rgb(73, 198, 214);
-  }
-
-
-  .gem-title a{
     color: rgb(73, 198, 214);
   }
 

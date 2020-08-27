@@ -1,7 +1,15 @@
 <h2>Create a New Gem</h2>
 
 <form class="form" action="/gems" method="post">
-<p class="gem-title" id="form">Gem Name: <input class="description" type="text" name="name" id="form"></p>
-<p class="gem-title" id="form">Gem Description: <input class="description" type="textbox" name="description" id="form"></p>
-<input class="button" type="submit" value="Create New Gem">
+    <div class="gem-title" id="form">
+        <label for="gem-title">Gem Name: </label>
+        <input class="gem-name-description" type="text" name="name" id="form">
+    </div><br><br>
+
+    <div class="gem-title" id="form">
+        <label for="gem-description">Gem Description: </label>
+        <input class="description" type="textarea" name="description" id="form">
+    </div><br>
+
+    <input class="button" type="submit" value="Create New Gem">
 </form>
