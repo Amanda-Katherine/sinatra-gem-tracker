@@ -64,16 +64,19 @@ class GemstoneController < ApplicationController
             redirect "/gems"
         end
     end
-
+    
     delete '/gems/:id' do
         redirect_if_not_logged_in
+        
         @gem = Gemstone.find_by_id(params[:id])
-        redirect_if_not_creator(@gem)
-
-        if @gem && gem_creator?(@gem)
+       
+        if @gem
+            redirect_if_not_creator(@gem)
             flash[:message] = "That gem is gone forever."
             @gem.delete
             redirect "/users/#{current_user.slug}"
+        else
+            redirect "/gems"
         end
     end
 end
