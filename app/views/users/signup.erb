@@ -1,6 +1,8 @@
 <h2>Sign Up</h2>
 
-<%# insert flash message here for signup errors %>
+<% if flash[:message] %>
+<p class="error">  ---------- <%= flash[:message] %> ---------- </p>
+<% end %>
 
 <form class="form" action="/signup" method="POST">
   <p class="form-description">Username: <input class="form-input" type="text" name="username" id="username"></p>

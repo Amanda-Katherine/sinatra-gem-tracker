@@ -5,24 +5,19 @@ class GemstoneController < ApplicationController
         erb :'gems/all_gems'
     end
 
-    post '/gems' do
-        if logged_in? 
-                gem = current_user.gemstones.build(name: params[:name], description: params[:description])
-                if gem.save
-                    redirect "/gems/#{gem.id}"
-                else
-                    redirect '/gems/new'
-                end
-        else
-            redirect '/login'
-        end
+    get '/gems/new' do   
+        redirect_if_not_logged_in
+        erb :'/gems/create_gem'
     end
 
-    get '/gems/new' do
-        if !logged_in? 
-            redirect_if_not_logged_in
-        else 
-            erb :'/gems/create_gem'
+    post '/gems' do
+        redirect_if_not_logged_in
+
+        gem = current_user.gemstones.build(name: params[:name], description: params[:description])
+        if gem.save
+            redirect "/gems/#{gem.id}"
+        else
+            redirect '/gems/new'
         end
     end
 
@@ -50,8 +45,7 @@ class GemstoneController < ApplicationController
         else
             flash[:message] = "Well, that gem doesn't exist. Keep mining."
             redirect '/gems'
-        end
-       
+        end  
     end
 
     patch '/gems/:id' do
@@ -74,13 +68,12 @@ class GemstoneController < ApplicationController
     delete '/gems/:id' do
         redirect_if_not_logged_in
         @gem = Gemstone.find_by_id(params[:id])
+        redirect_if_not_creator(@gem)
+
         if @gem && gem_creator?(@gem)
-            #insert flash message here
+            flash[:message] = "That gem is gone forever."
             @gem.delete
             redirect "/users/#{current_user.slug}"
-        else 
-            redirect "/gems"
-            #insert flash message about not having credentials to do this action 
         end
     end
 end

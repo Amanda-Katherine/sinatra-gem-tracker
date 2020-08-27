@@ -1,20 +1,23 @@
 class UsersController < ApplicationController
     
     get '/signup' do
-        if logged_in? 
+        if current_user 
             redirect to '/gems'
         end
-            erb :'users/signup'
+        
+        erb :'users/signup'
     end
 
     post '/signup' do
-        @user=User.create(:username => params[:username].downcase, :password => params[:password]) #check if params works here as well
+        params[:username] = params[:username].downcase
+        @user=User.create(params) 
+
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
             redirect to '/gems'
         else 
-           #insert flash message 
+           flash[:message] = @user.errors.full_messages.join(",").gsub(",","  &&  ")
             redirect to '/signup'
         end
     end
@@ -26,17 +29,17 @@ class UsersController < ApplicationController
         if !!@user
             erb :"/users/users_gems"
         else
-            #insert flash message about username not existing
+            flash[:message] = "Hmmm...I know you have imaginary friends, but this one doesn't exist."
             redirect '/gems'
         end
     end
 
     get '/login' do
-        if logged_in?
-            redirect to '/gems'
-        else 
-            erb :'users/login'
+        if current_user
+            redirect to '/gems' 
         end
+
+        erb :'users/login'
     end
 
     post '/login' do
@@ -52,9 +55,7 @@ class UsersController < ApplicationController
     end
 
     get '/logout' do
-        if logged_in?
-            session.destroy
-        end
+        session.destroy
 
         redirect to '/'
     end
