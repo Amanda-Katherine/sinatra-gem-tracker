@@ -2,18 +2,27 @@
 
 <% if logged_in? %>
     <div class="homepage-title">
-        Hello, <%=current_user.username %>. Welcome back to <span class="gem-tracker">Gem Tracker</span>!
+        Hello again, <%=current_user.username %>. Welcome back to <span class="gem-tracker">Gem Tracker</span>!
     </div> 
 
-    <h3>A place to <i>stay classy</i> while talking about ruby gems. Shiny?</h3>
+    <div class="tagline">
+        A place to <i>stay classy</i> while talking about ruby gems. Shiny?
+    </div>
 
-    <p class="welcome-link">Click to create a <a href="/gems/new">new gem</a> or to view your <a href="/users/<%=current_user.slug%>"> user page</a> to get started</p>
+    <p class="welcome-link">
+        Click to create a <a href="/gems/new">new gem</a> or to view your <a href="/users/<%=current_user.slug%>"> user page</a> to get started
+    </p>
+
 <% else %>
     <div class="homepage-title">
         Welcome to <span class="gem-tracker">Gem Tracker</span>!
     </div>
 
-    <h3>A place to <i>stay classy</i> while talking about ruby gems. Shiny?</h3>
+    <div class="tagline">
+        A place to <i>stay classy</i> while talking about ruby gems. Shiny?
+    </div>
 
-    <p class="welcome-link">Please <a href="/signup">sign up</a> or <a href="/login"> login</a> to get started</p>
+    <p class="welcome-link">
+        Please <a href="/signup">sign up</a> or <a href="/login"> login</a> to get started
+    </p>
 <%end %>
