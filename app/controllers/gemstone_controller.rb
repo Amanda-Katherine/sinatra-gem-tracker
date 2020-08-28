@@ -17,6 +17,7 @@ class GemstoneController < ApplicationController
         if gem.save
             redirect "/gems/#{gem.id}"
         else
+            flash[:message] = "Uh oh...gem not created. Did you have a blank input?"
             redirect '/gems/new'
         end
     end

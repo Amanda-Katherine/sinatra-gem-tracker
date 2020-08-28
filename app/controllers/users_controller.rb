@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect to '/gems'
         else 
-           flash[:message] = @user.errors.full_messages.join(",").gsub(",","  &&  ")
+            flash[:message] = @user.errors.full_messages.join(",").gsub(",","  &&  ")
             redirect to '/signup'
         end
     end
