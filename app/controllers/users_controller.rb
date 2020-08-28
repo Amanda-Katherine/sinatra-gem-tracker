@@ -10,14 +10,14 @@ class UsersController < ApplicationController
 
     post '/signup' do
         params[:username] = params[:username].downcase
-        @user=User.create(params) 
+        user=User.create(params) 
 
-        if @user.valid?
-            @user.save
-            session[:user_id] = @user.id
+        if user.valid?
+            user.save
+            session[:user_id] = user.id
             redirect to '/gems'
         else 
-            flash[:message] = @user.errors.full_messages.join(",").gsub(",","  &&  ")
+            flash[:message] = user.errors.full_messages.join(",").gsub(",","  &&  ")
             redirect to '/signup'
         end
     end
