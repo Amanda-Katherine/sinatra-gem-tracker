@@ -34,7 +34,6 @@ class ApplicationController < Sinatra::Base
       gem.user == current_user
     end
 
-
     def redirect_if_not_creator(gem)
       if !gem_creator?(gem)
         flash[:message] = "You aren't allowed to change the tune of this gem. Franie boy says, permission denied."

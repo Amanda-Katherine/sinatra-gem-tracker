@@ -1,6 +1,6 @@
 <h2>Login</h2>
 
-  <%= flash[:message] %> <br> 
+<span class="error"><%= flash[:message] %></span> <br> 
 
 <form class="form" action="/login" method="post">
   <p class="form-description"> Username: <input class="form-input" type="text" name="username" value="<%= @user && @user.username %>"></p>

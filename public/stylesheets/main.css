@@ -16,7 +16,7 @@
     margin-top: 120px;
     background-color: rgba(63, 7, 1, 0.931);
     color: rgb(235, 226, 226);
-    font-family: Georgia, 'Times New Roman', Times, serif
+    font-family: 'Times New Roman', Georgia, Times, serif;
     line-height: 18px;
     overflow: scroll;
   }
@@ -117,6 +117,12 @@
     font-size: 20px;
     height: 18px; 
     overflow: auto;
+  }
+
+  .error {
+    background-color: rgba(29, 188, 228, 0.582);
+    color: rgb(235, 236, 146);
+    font-size: 20px;
   }
 
   .footer-link {

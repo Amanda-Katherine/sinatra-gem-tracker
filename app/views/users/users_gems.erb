@@ -4,7 +4,7 @@
     <h2>Here are your Gems, <%= @user.username %></h2>
 <% end %>
 
-<%= flash[:message] %> <br>
+<span class="error"><%= flash[:message] %></span> <br>
 
 <% @user.gemstones.each do |gem| %>
     <div>

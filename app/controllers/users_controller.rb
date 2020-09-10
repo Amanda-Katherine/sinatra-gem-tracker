@@ -13,11 +13,10 @@ class UsersController < ApplicationController
         user=User.create(params) 
 
         if user.valid?
-            user.save
             session[:user_id] = user.id
             redirect to '/gems'
         else 
-            flash[:message] = user.errors.full_messages.join(",").gsub(",","  &&  ")
+            flash[:message] = user.errors.full_messages.to_sentence
             redirect to '/signup'
         end
     end
@@ -44,14 +43,13 @@ class UsersController < ApplicationController
 
     post '/login' do
         @user = User.find_by_username(params[:username])
-        
         if @user && @user.authenticate(params[:password])
             flash[:message] = ""
             session[:user_id] = @user.id
             redirect to '/gems'
         else
             flash[:message] = "Invalid login."
-            erb :'users/login'
+            redirect to '/login'
         end
     end
 

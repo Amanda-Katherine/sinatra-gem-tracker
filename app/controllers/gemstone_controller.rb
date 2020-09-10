@@ -11,8 +11,9 @@ class GemstoneController < ApplicationController
 
     post '/gems' do
         redirect_if_not_logged_in
-
+        
         gem = current_user.gemstones.build(name: params[:name], description: params[:description])
+
         if gem.save
             redirect "/gems/#{gem.id}"
         else
@@ -79,4 +80,7 @@ class GemstoneController < ApplicationController
             redirect "/gems"
         end
     end
+
+
+
 end
