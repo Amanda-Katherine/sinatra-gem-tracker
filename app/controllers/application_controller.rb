@@ -40,6 +40,10 @@ class ApplicationController < Sinatra::Base
         redirect to '/gems'
       end
     end
+
+    def sort_gems
+      @gems = Gemstone.all.sort_by {|gem| gem.description.length}.reverse.sort_by{|gem| gem.name.downcase}.uniq {|gem| gem.name.downcase}
+    end
   end
 
 end

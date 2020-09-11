@@ -1,6 +1,6 @@
 class GemstoneController < ApplicationController
     get '/gems' do
-        @gems = Gemstone.all.sort_by {|gem| gem.description.length}.reverse.sort_by{|gem| gem.name.downcase}.uniq {|gem| gem.name.downcase}
+        sort_gems 
         erb :'gems/all_gems'
     end
 
